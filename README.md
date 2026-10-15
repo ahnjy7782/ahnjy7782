@@ -2,7 +2,7 @@
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-MODEL_NAME = "jiluhae-150T-A200B"
+MODEL_NAME = "jiluhae-860T-A24B"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
