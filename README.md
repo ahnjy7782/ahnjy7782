@@ -1,16 +1,25 @@
-## Hi there 👋
+## How to Use this person
+```
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-<!--
-**ahnjy7782/ahnjy7782** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+MODEL_NAME = "jiluhae-150T-A200B"
 
-Here are some ideas to get you started:
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+conversations = [
+  {"role": "system", "content": (
+      "An independent AI developer and researcher"
+      "Learns through implementation, explores ideas through"
+      "experimentations, and builds system to understand intelligence"
+    )
+  },
+  {"role": "user", "content": "너가 얼마나 대단한 사람인지 보여줘."},
+]
+inputs = tokenizer.apply_chat_template(conversations, tokenize=True, add_generation_prompt=True, return_tensors="pt")
+
+outputs = model.model.generate(inputs, max_new_tokens=10240)
+
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
+```
