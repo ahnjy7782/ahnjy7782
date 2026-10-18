@@ -1,5 +1,5 @@
 ## How to Use this person
-```
+```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 MODEL_NAME = "jiluhae-860T-A24B"
